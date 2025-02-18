@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+<Route path="/instant-consultation" element={<InstantConsultation />} />
+
 
 function App() {
   return (
