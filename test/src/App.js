@@ -5,6 +5,7 @@ import logo from './logo.svg'; // Import the logo
 import BookingConsultation from './components/InstantConsultationBooking/BookingConsultation'; // Adjust path as needed
 import InstantConsultation from './components/InstantConsultationBooking/InstantConsultation'; // Adjust path as needed
 import Landing_Page from './components/Landing_Page/Landing_Page'; // Import Landing_Page component
+import Notification from './components/Notification/Notification'; // Import the Notification component
 
 function App() {
   return (
@@ -25,17 +26,20 @@ function App() {
           </a>
         </header>
 
-        {/* Define Routes */}
-        <Routes>
-          {/* Default route (Home) */}
-          <Route path="/" element={<Landing_Page />} />
+        {/* Wrap Routes with Notification component */}
+        <Notification>
+          {/* Define Routes */}
+          <Routes>
+            {/* Default route (Home) */}
+            <Route path="/" element={<Landing_Page />} />
 
-          {/* Route for Booking Consultation */}
-          <Route path="/booking" element={<BookingConsultation />} />
+            {/* Route for Booking Consultation */}
+            <Route path="/booking" element={<BookingConsultation />} />
 
-          {/* Route for Instant Consultation */}
-          <Route path="/instant-consultation" element={<InstantConsultation />} />
-        </Routes>
+            {/* Route for Instant Consultation */}
+            <Route path="/instant-consultation" element={<InstantConsultation />} />
+          </Routes>
+        </Notification>
       </div>
     </Router>
   );
