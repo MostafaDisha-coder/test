@@ -1,0 +1,61 @@
+/* Reports Layout Container */
+.reports-layout {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+  }
+  
+  .reports-layout h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Table Styling */
+  .reports-layout table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reports-layout th,
+  .reports-layout td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .reports-layout th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Button Styling */
+  .view-button,
+  .download-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-button {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .view-button:hover {
+    background-color: #218838;
+  }
+  
+  .download-button {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+.download-button:hover {
+  background-color: #138496;
+}

@@ -1,31 +1,53 @@
-// Import necessary modules from React library
-import React, { useEffect } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ProfileCard from "../ProfileCard/ProfileCard"; // Import the ProfileCard component
+import "./Navbar.css";
 
-// Import components for routing from react-router-dom library
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+const Navbar = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
 
-// Import custom Navbar component
-import Navbar from './Components/Navbar/Navbar';
+  // Toggle dropdown visibility
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
-// Function component for the main App
-function App() {
-
-  // Render the main App component
   return (
-    <div className="App">
-        {/* Set up BrowserRouter for routing */}
-        <BrowserRouter>
-          {/* Display the Navbar component */}
-          <Navbar/>
+    <nav>
+      <div className="nav__logo">
+        <Link to="/">MyApp</Link>
+      </div>
 
-          {/* Set up the Routes for different pages */}
-          <Routes>
-            {/* Define individual Route components for different pages */}
-          </Routes>
-        </BrowserRouter>
-    </div>
+      <ul className="nav__links">
+        <li className="link">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="link">
+          <Link to="/about">About</Link>
+        </li>
+        <li className="link">
+          <Link to="/services">Services</Link>
+        </li>
+      </ul>
+
+      {/* Welcome User and Dropdown */}
+      <div className="welcome-user" onClick={toggleDropdown}>
+        <button className="btn2">Welcome, {sessionStorage.getItem("name") || "User"}</button>
+        {showDropdown && (
+          <ul className="dropdown-menu">
+            <li>
+              <Link to="/profile">Your Profile</Link>
+            </li>
+            <li>
+              <Link to="/reports">Your Reports</Link> {/* Add "Your Reports" link */}
+            </li>
+            <li>
+              <Link to="/logout">Logout</Link>
+            </li>
+          </ul>
+        )}
+      </div>
+    </nav>
   );
-}
+};
 
-// Export the App component as the default export
-export default App;
+export default Navbar;
