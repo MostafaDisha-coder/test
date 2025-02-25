@@ -8,13 +8,20 @@ const ReportsLayout = () => {
       serialNumber: 1,
       doctorName: "Dr. John Doe",
       doctorSpeciality: "Cardiology",
+      reportUrl: "/patient_report.pdf", // Path to the PDF file in the public folder
     },
     {
       serialNumber: 2,
       doctorName: "Dr. Jane Smith",
       doctorSpeciality: "Dermatology",
+      reportUrl: "/patient_report.pdf", // Path to the PDF file in the public folder
     },
   ];
+
+  // Function to open the report in a new tab
+  const handleViewReport = (reportUrl) => {
+    window.open(reportUrl, "_blank");
+  };
 
   return (
     <div className="reports-layout">
@@ -36,10 +43,21 @@ const ReportsLayout = () => {
               <td>{report.doctorName}</td>
               <td>{report.doctorSpeciality}</td>
               <td>
-                <button className="view-button">View Report</button>
+                <button
+                  className="view-button"
+                  onClick={() => handleViewReport(report.reportUrl)}
+                >
+                  View Report
+                </button>
               </td>
               <td>
-                <button className="download-button">Download Report</button>
+                <a
+                  href={report.reportUrl}
+                  download={`report_${report.serialNumber}.pdf`}
+                  className="download-button"
+                >
+                  Download Report
+                </a>
               </td>
             </tr>
           ))}
