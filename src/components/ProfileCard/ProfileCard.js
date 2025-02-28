@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API_URL } from "../../config";
+import { API_URL } from '../Server_Setup/config';
 import { useNavigate } from "react-router-dom";
 import "./ProfileCard.css";
 

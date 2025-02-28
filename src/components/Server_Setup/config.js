@@ -5,4 +5,4 @@ export const API_URL =
     ? "https://symmetrical-capybara-97r69wq946wcp45r-3000.app.github.dev"  // GitHub Codespaces URL
     : "https://your-production-server.com";  // Production URL (replace with actual URL when deployed)
 
-console.log("API_URL :", API_URL);
+console.log("API_URL :", API_URL); 
