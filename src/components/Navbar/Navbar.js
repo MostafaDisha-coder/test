@@ -46,6 +46,11 @@ const Navbar = () => {
           </ul>
         )}
       </div>
+
+      {/* Render ProfileCard when on the /profile route */}
+      <div>
+        {window.location.pathname === "/profile" && <ProfileCard />}
+      </div>
     </nav>
   );
 };

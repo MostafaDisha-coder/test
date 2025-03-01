@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { API_URL } from '../Server_Setup/config';
 import { useNavigate } from "react-router-dom";
 import "./ProfileCard.css";
@@ -10,16 +10,7 @@ const ProfileCard = () => {
   const navigate = useNavigate();
 
   // Fetch user profile data
-  useEffect(() => {
-    const authtoken = sessionStorage.getItem("auth-token");
-    if (!authtoken) {
-      navigate("/login");
-    } else {
-      fetchUserProfile();
-    }
-  }, [navigate]);
-
-  const fetchUserProfile = async () => {
+  const fetchUserProfile = useCallback(async () => {
     try {
       const authtoken = sessionStorage.getItem("auth-token");
       const email = sessionStorage.getItem("email");
@@ -43,7 +34,16 @@ const ProfileCard = () => {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [navigate]); // Include navigate as a dependency
+
+  useEffect(() => {
+    const authtoken = sessionStorage.getItem("auth-token");
+    if (!authtoken) {
+      navigate("/login");
+    } else {
+      fetchUserProfile();
+    }
+  }, [navigate, fetchUserProfile]); // Include fetchUserProfile in the dependency array
 
   const handleEdit = () => {
     setEditMode(true);
